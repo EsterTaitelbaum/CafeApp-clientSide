@@ -1,0 +1,53 @@
+<div class="w3-container w3-padding-64 w3-blue-grey w3-grayscale-min w3-xlarge" id="myMap">
+    <div class="w3-content">
+        <h1 class="w3-center w3-jumbo" style="margin-bottom:64px">תשמרו איתנו על קשר</h1>
+        <p class="w3-xxlarge" style="direction:rtl">
+            <strong>הי!</strong>
+       כאן זה המקום לתקשר איתנו-
+            רוצים לפרגן לנו? יש לכם תלונות? יש לכם הערות על אחד הסניפים שלנו או על האתר
+            תשפכו הכל פה, תשאירו פרטים, וניצור איתכם קשר
+        </p>
+        
+
+
+
+        <form [formGroup]="requestForm">
+        <div>
+            <p style="direction:rtl"><input  formControlName="name" class="w3-input w3-padding-16 w3-border" type="text" placeholder="אז איך קוראים לך" required name="Name"></p>
+            <p style="direction:rtl"><input formControlName="phone" class="w3-input w3-padding-16 w3-border" type="text" placeholder="מה המספר טלפון שלך?" required name="Name"></p>
+
+            <select name="branch" id="branch" input  formControlName="branch" class="w3-input w3-padding-16 w3-border" style="direction:rtl">
+                <option value="" disabled selected>על איזה סניף אתה רוצה לדבר איתנו? </option>
+                <option value=0>קניה באתר</option>
+                <option value=2287>סניף אלונים</option>
+                <option value=2292>סניף עזריאלי</option>
+                <option value=2295>סניף תחנה מרכזית ירושלים</option>
+                <option value=2296>סניף קניון רמות</option>
+                <option value=2298>סניף מרינה הרצליה</option>
+                <option value=2301>סניף אשקלון</option>
+                <option value=2310>סניף קניון קרית גת</option>
+                <option value=2318>סניף רמת גן</option>
+                <option value=2323>סניף יפו ירושלים</option>
+                <option value=2328>סניף תל אביב צפון</option>
+                <option value=2838>סניף רעננה</option>
+                <option value=3328>סניף מרכזית הוד השרון</option>
+
+            </select>
+            <p></p>
+
+            <select name="complaints" id="complaints"  input formControlName="subject" class="w3-input w3-padding-16 w3-border"  style="direction:rtl">
+                <option value="" disabled selected>באיזה נושא? </option>
+                <option value=84>איכות השירות</option>
+                <option value=83>איכות המאכל</option>
+                <option value=82>הטבות מועדון</option>
+                <option value=249>בקשות/הצעות</option>
+                <option value=85>עדכון פרטים</option>
+                <option value=0>שונות</option>
+
+            </select>
+            <p style="direction:rtl"><input formControlName="message" class="w3-input w3-padding-16 w3-border" id="desc" type="text" placeholder="כאן שופכים" required name="Message"></p>
+            <p style="direction:rtl"><button class="w3-button w3-light-grey w3-block" (click)="sendComplaint()">שלח</button></p>
+        </div>
+    </form>
+    </div>
+</div>
