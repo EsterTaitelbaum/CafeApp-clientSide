@@ -1,5 +1,10 @@
 import { Injectable } from '@angular/core';
 import {HttpClientModule} from '@angular/common/http'
+import {Request}from './request.model'
+import { FormGroup } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+
 
 @Injectable({
   providedIn: 'root'
@@ -9,5 +14,37 @@ export class GeneralService {
   public postRequest(){
     const url:string="hhh";
   }
-  constructor() { }
+
+  makeRequestObject(requestFromForm:FormGroup):Request{
+
+    let subjectsDict2 = new Map<number, string>();
+    subjectsDict2.set(84, "איכות השירות"); 
+    subjectsDict2.set(83, "איכות המאכל");
+    subjectsDict2.set(82, "הטבות מועדון");
+    subjectsDict2.set(249, "בקשות/הצעות");
+    subjectsDict2.set(85, "עידכון פרטים");
+    subjectsDict2.set(0, "עידכון פרטים");
+
+    //let requestFromForm=this.requestForm.value;
+    let requestObject:Request=new Request();
+    requestObject.ClientCode=requestFromForm.value.branch;
+    requestObject.SubjectCode=Number(requestFromForm.value.complaints);
+    requestObject.SubjectName=String(subjectsDict2.get(Number(requestFromForm.value.complaints)));
+    requestObject.ComplaintDesc=requestFromForm.value.message
+    requestObject.UpdateDate=String(new Date());
+    requestObject.LetterDesc="";
+    requestObject.Summary=requestFromForm.value.message;
+
+    console.log(requestObject);
+
+    return requestObject;
+  }
+
+
+  
+  saveNewStudentsToServer(requestObject :Request):Observable<boolean>
+    {
+      return this._http.post<boolean>("/api/ComplaintController1",requestObject);
+    }
+  constructor(private _http: HttpClient) { }
 }

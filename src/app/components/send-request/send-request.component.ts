@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {Request}from '../request.model'
+import {} from '../general.service'
+import { GeneralService } from '../general.service';
 
 @Component({
   selector: 'app-send-request',
@@ -12,20 +15,29 @@ export class SendRequestComponent implements OnInit {
     "name":new FormControl(""),
     "phone":new FormControl(""),
     "branch":new FormControl(""),
-    "subject":new FormControl(""),
+    "complaints":new FormControl(""),
     "message":new FormControl("")
   });
   
   sendComplaint(){
-    //console.log("888888");
-    let requestToSent=this.requestForm.value;
-    console.log(requestToSent);
+    let requestToSent=this.requestForm;
+    let requestObject :Request=this._generalService.makeRequestObject(requestToSent);
+    this._generalService.saveNewStudentsToServer(requestObject).subscribe(data=>{
+      alert("הפניה התקבלה בהצלחה");
+    }, err=>{
+      alert("מצטערים, משהו נתקע בשליחת הפניה. נסו שוב מאוחר יותר");
+    }
+    );
+    
+    
   }
-
-  constructor() { }
+  
+  constructor(private _generalService :GeneralService) { }
 
   ngOnInit(): void {
     
   }
 
 }
+
+

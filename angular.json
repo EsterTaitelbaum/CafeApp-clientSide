@@ -68,6 +68,11 @@
           "defaultConfiguration": "production"
         },
         "serve": {
+          "options": {
+            "browserTarget": "coffee-app:build",
+            "proxyConfig":"src/proxy.conהfig.json"
+
+          },
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
