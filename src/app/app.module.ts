@@ -9,11 +9,15 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule,Routes } from '@angular/router';
 import { AboutComponent } from './components/about/about.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { OpeningPageComponent } from './opening-page/opening-page.component';
+//import { MatSliderModule } from '@angular/material/slider';
 
 const ROUTES:Routes=[
 {path:"request",component:SendRequestComponent},
-{path:"home",component:HomeComponent},
+{path:"home",component:OpeningPageComponent},
 {path:"about",component:AboutComponent},
+{path:"",component:OpeningPageComponent},
 ];
 
 @NgModule({
@@ -22,14 +26,17 @@ const ROUTES:Routes=[
     MenuComponent,
     HomeComponent,
     SendRequestComponent,
-    AboutComponent
+    AboutComponent,
+    OpeningPageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    RouterModule.forRoot(ROUTES)
+    RouterModule.forRoot(ROUTES),
+    BrowserAnimationsModule,
+    // MatSliderModule
   ],
   providers: [],
   bootstrap: [AppComponent,HomeComponent]
