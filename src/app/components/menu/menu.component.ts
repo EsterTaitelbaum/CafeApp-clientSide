@@ -23,7 +23,10 @@ export class MenuComponent implements OnInit {
     this.router.navigate(['/home']);
     window.scrollTo(0, 0);
   }
+  goToSendLogin(){
+    this.router.navigate(['/login']);
 
+  }
   ngOnInit(): void {
   }
 

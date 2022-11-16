@@ -19,3 +19,12 @@ body, h1, h2, h3, h4, h5, h6,p,span {
     background-image: url("/w3images/pizza.jpg");
     min-height: 100%;
 }
+
+img{
+    height: 100%;
+
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
