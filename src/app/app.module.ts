@@ -14,6 +14,8 @@ import { OpeningPageComponent } from './components/opening-page/opening-page.com
 import { LoginComponent } from './components/login/login.component';
 import { ShopComponent } from './components/shop/shop.component';
 import { ManageComponent } from './components/manage/manage.component';
+import { ProductComponent } from './components/product/product.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 //import { MatSliderModule } from '@angular/material/slider';
 
 const ROUTES:Routes=[
@@ -36,6 +38,7 @@ const ROUTES:Routes=[
     OpeningPageComponent,
     LoginComponent,
     ShopComponent,
+    ProductComponent,
     
   ],
   imports: [
@@ -45,6 +48,7 @@ const ROUTES:Routes=[
     HttpClientModule,
     RouterModule.forRoot(ROUTES),
     BrowserAnimationsModule,
+    NgbModule,
     // MatSliderModule
   ],
   providers: [],

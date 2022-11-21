@@ -19,6 +19,9 @@ export class MenuComponent implements OnInit {
     this.router.navigate(['/request']);
     window.scrollTo(0, 0);
   }
+  goToShop(){
+    this.router.navigate(['/shop']);
+  }
   goToSendHome(){
     this.router.navigate(['/home']);
     window.scrollTo(0, 0);

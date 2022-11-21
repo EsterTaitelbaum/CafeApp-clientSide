@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import {Request}from '../request.model'
-import {} from '../general.service'
-import { GeneralService } from '../general.service';
+import {Request}from '../../models/request.model'
+import { GeneralService } from '../../services/general.service';
 
 @Component({
   selector: 'app-send-request',
