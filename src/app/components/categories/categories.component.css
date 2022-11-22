@@ -1,18 +1,36 @@
+/* checkbox{
+    background:rgb(156, 26, 26);
+    width: 40%;
+    height: 20%;
+    font-size: medium;
+    color: white;
+
+
+}
+.Filters {
+    position: absolute;
+    width: 155px;
+    float: right;
+    margin: 4px 4px;
+    padding-top: 50px;
+    padding-bottom: 10px;
+    position: absolute;
+    z-index: 102;
+    background-color: #000;
+    font-family: "Amatic SC", sans-serif;
+    font-size: 14px;
+    min-height: 100%;
+    color: white;
+} */
+
 
 html, body {
-    direction: ltr;
+    direction: rtl;
     margin: 0;
     padding: 0;
     background-color: #000;
-
 }
-/* .cat{
-    float:right;
 
-} */
-::-webkit-scrollbar {
-    display: none;
-}
 ul{
     margin:0;
 }
@@ -87,19 +105,18 @@ ul{
 }
 .card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    max-width: 350px;
+    max-width: 300px;
     margin: auto;
     text-align: center;
     font-family: "Amatic SC", sans-serif;
     float: left;
     font-size: 40px;
-    height: 550px;
+    height: 600px;
     margin: 6px;
 /*    background-image: url("images/back/i1.jpg");
 */    background-color: #e3a715;
     background-size: initial;
     font-weight: bold;
-
 }
 
 .img-w{
@@ -220,9 +237,12 @@ p.description{
 .QuickLinks ul li {
   float:left;
 }
-
+.warp{
+    float: right;
+}
 
 .Filters {
+    direction: rtl;
     position: absolute;
     width: 155px;
     float: right;
@@ -236,6 +256,9 @@ p.description{
     font-size: 14px;
     min-height: 100%;
     color: white;
+    float:right;
+    right: 0;
+
 }
 
 .myButton1 {
@@ -298,9 +321,9 @@ body, h1, h2, h3, h4, h5, h6 {
 .OptionHead {
     font-weight: bold;
     font-size: 45px;
-    text-align: center;
+    text-align: right;
     display: inline-block;
-    margin: 0px 25px 25px 45px;
+    margin: 0px 5px 5px 5px;
 }
 
 .radiogroup {
@@ -362,7 +385,12 @@ body, h1, h2, h3, h4, h5, h6 {
     .option-input:checked {
         background: #e3a715;
     }
+    .cat{
+            float:right;
+            display: inline;
 
+        /* right: 0; */
+    }
         .option-input:checked::before {
             width: 20px;
             height: 20px;

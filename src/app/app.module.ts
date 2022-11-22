@@ -16,6 +16,7 @@ import { ShopComponent } from './components/shop/shop.component';
 import { ManageComponent } from './components/manage/manage.component';
 import { ProductComponent } from './components/product/product.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CategoriesComponent } from './components/categories/categories.component';
 //import { MatSliderModule } from '@angular/material/slider';
 
 const ROUTES:Routes=[
@@ -39,6 +40,7 @@ const ROUTES:Routes=[
     LoginComponent,
     ShopComponent,
     ProductComponent,
+    CategoriesComponent,
     
   ],
   imports: [

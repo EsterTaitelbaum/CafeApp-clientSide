@@ -18,9 +18,11 @@ const mock_items = [
 export class ProductsService {
 
   getItems(): Observable<any> {
-
     return this._http.get<any>("/api/Products");
-    //return of(mock_items);
+  }
+  getCategoriesForServer(): Observable<any>{
+    return this._http.get<any>("/api/Category");
+
   }
   getItem(id:number): Observable<any>{
     return of(mock_items[id+1]);
