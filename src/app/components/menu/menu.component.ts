@@ -30,6 +30,10 @@ export class MenuComponent implements OnInit {
     this.router.navigate(['/login']);
 
   }
+  goToCategories(){
+    this.router.navigate(['/categories']);
+
+  }
   ngOnInit(): void {
   }
 

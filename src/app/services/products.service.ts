@@ -1,31 +1,59 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-//import {}from '../models/'
+import { BehaviorSubject } from 'rxjs';
 
 
+//const PRODUCTS= []
 
-const mock_items = [
-  {id: 1, name: 'Adidas Stan Smith', price: 90.0, category: 'Shoes', description: ''},
-  {id: 2, name: 'Nike Air Max', price: 110.0, category: 'Shoes', description: ''},
-  {id: 3, name: 'Reebok Sweat Shirt', price: 45.0, category: 'Clothes', description: ''},
-  {id: 4, name: 'Puma T-Shirt', price: 30.0, category: 'Clothes', description: ''},
-];
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductsService {
 
-  getItems(): Observable<any> {
+  private sourceMessage=new BehaviorSubject<number>(0);
+  currentMessage=this.sourceMessage.asObservable();
+  PRODUCTS:[];
+
+  changeMessage(message:number){
+    this.sourceMessage.next(message)
+  }
+
+  getProductsFromServer(): Observable<any> {
     return this._http.get<any>("/api/Products");
   }
   getCategoriesForServer(): Observable<any>{
     return this._http.get<any>("/api/Category");
 
   }
-  getItem(id:number): Observable<any>{
-    return of(mock_items[id+1]);
+  getProductsByCategory(categoryId:number){
+    if (this.PRODUCTS.length=0)
+    {
+      this.getProductsFromServer().subscribe(data => {
+        this.PRODUCTS=data;
+      })
+    }
+    let productsByCategory=this.PRODUCTS.filter((prod:any)=>{
+      return prod.categoryId==categoryId;
+    })
+    return productsByCategory;
   }
-  constructor(private _http: HttpClient) { }
+  getProductsFromLocaly(): Observable<any>{
+    if (this.PRODUCTS.length=0)
+    {
+      this.getProductsFromServer().subscribe(data => {
+        this.PRODUCTS=data;
+      })
+    }
+    return of(this.PRODUCTS);
+    
+  }
+  constructor(private _http: HttpClient) {
+    alert("service constructor")
+    this.getProductsFromServer().subscribe(data => {
+      this.PRODUCTS=data;
+    })
+
+   }
 }

@@ -7,7 +7,7 @@
             <div *ngFor="let category of categories;" class="cat" >
             
             <div class="cb checkbox">
-                <input type="radio" class="option-input checkbox" id="ch" value="" name="radio">
+                <input type="radio" class="option-input checkbox" id="ch" value="" name="radio" (click)="clickOnCategory(category.categoryId)">
                 <label for="">
                     <span class="OptionName">{{category.categoryName}} </span>
                     <span class="Count"></span>

@@ -1,10 +1,10 @@
 
 <body>
-    <app-categories class="cat"></app-categories>
+    <!-- <app-categories class="cat" (onChooseCategory)="filterByCategory($event)"></app-categories> -->
 <HTML>
 <div class="warp">
 <div class="products">
-    <div *ngFor="let item of items;" >
+    <div *ngFor="let item of ItemsToShow;" >
         <div class="card">
             <div>
                 <img src="../../../assets/products/{{item.imageName}}" style="width:300px;height:300px" id="img">
