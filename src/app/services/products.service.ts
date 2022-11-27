@@ -12,14 +12,14 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class ProductsService {
 
-  private sourceMessage=new BehaviorSubject<number>(0);
-  currentMessage=this.sourceMessage.asObservable();
-  PRODUCTS:[];
 
-  changeMessage(message:number){
-    this.sourceMessage.next(message)
+  private productByCategory=new BehaviorSubject<any[]>([]);
+  productByCategoryObs=this.productByCategory.asObservable();
+  PRODUCTS:any[]=[];
+  
+  getProductByCategory(categoryId:number){
+    this.productByCategory.next(this.filterProductsByCategory(categoryId));
   }
-
   getProductsFromServer(): Observable<any> {
     return this._http.get<any>("/api/Products");
   }
@@ -27,8 +27,8 @@ export class ProductsService {
     return this._http.get<any>("/api/Category");
 
   }
-  getProductsByCategory(categoryId:number){
-    if (this.PRODUCTS.length=0)
+  filterProductsByCategory(categoryId:number){
+    if (this.PRODUCTS.length==0 ||this.PRODUCTS== undefined)
     {
       this.getProductsFromServer().subscribe(data => {
         this.PRODUCTS=data;
@@ -36,24 +36,14 @@ export class ProductsService {
     }
     let productsByCategory=this.PRODUCTS.filter((prod:any)=>{
       return prod.categoryId==categoryId;
-    })
+    }
+    )
     return productsByCategory;
   }
-  getProductsFromLocaly(): Observable<any>{
-    if (this.PRODUCTS.length=0)
-    {
-      this.getProductsFromServer().subscribe(data => {
-        this.PRODUCTS=data;
-      })
-    }
-    return of(this.PRODUCTS);
-    
-  }
+
   constructor(private _http: HttpClient) {
-    alert("service constructor")
     this.getProductsFromServer().subscribe(data => {
       this.PRODUCTS=data;
     })
-
    }
 }

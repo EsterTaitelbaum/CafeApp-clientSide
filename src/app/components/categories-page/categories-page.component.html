@@ -2,7 +2,7 @@
     <div class="warp">
     <div class="products">
         <div *ngFor="let category of categories" >
-            <div class="card" (click)="goToProducts(category.categoryId)">
+            <div class="card" (click)="goToProducts(category.categoryId)" type="button">
                 <div>
                     <img src="../../../assets/categories//{{category.imageName}}" class="img"  id="img">
                 </div>

@@ -16,23 +16,18 @@ export class CategoriesPageComponent implements OnInit {
   getCategories(){
     this._productsService.getCategoriesForServer().subscribe(data=>{
       this.categories=data;
-      console.log(data)
+      //console.log(data)
     })
   }
   goToProducts(categoryId:number){
-    alert(categoryId);
-    this._productsService.changeMessage(categoryId);
+    this._productsService.getProductByCategory(categoryId);
     this.router.navigate(['/shop']);
-    //this.onChooseCategory.emit();
   }
 
-  newMessage(){
-    this._productsService.changeMessage(8);
-  }
+
   constructor(private _productsService:ProductsService,private router:Router) { }
 
   ngOnInit(): void {
-    //this._productsService.currentMessage.subscribe(message=>this.message=message);
     this.getCategories()
   }
 

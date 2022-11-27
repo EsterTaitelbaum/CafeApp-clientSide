@@ -14,14 +14,6 @@ export class ShopComponent implements OnInit {
   message:number;
   filterByCategory(categoryId:number){
     this.getItems(categoryId);
-
-    // alert("shop"+categoryId);
-    // this.ItemsToShow=[];
-    // //this.router.navigated = false;
-    // this.ItemsToShow=this.AllItems.filter((prod:any)=>{
-    //   return prod.categoryId==categoryId;
-    // })
-    // console.log("ItemsToShow",this.ItemsToShow);
   }
   getItems(categoryId:number): void {
     this._productsService.getProductsFromServer()
@@ -29,7 +21,6 @@ export class ShopComponent implements OnInit {
         this.AllItems=data;
         //this.ItemsToShow=this.AllItems;
         console.log(this.AllItems);
-        alert("shop"+categoryId);
     this.ItemsToShow=[];
     //this.router.navigated = false;
     this.ItemsToShow=this.AllItems.filter((prod:any)=>{
@@ -44,13 +35,10 @@ export class ShopComponent implements OnInit {
 
   ngOnInit(): void {
     
-    this._productsService.currentMessage.subscribe(
-          
-          message=>{this.filterByCategory(message);
-            alert("this._productsService.currentMessage.subscribe");
-          }
-          
-      );
-  }
+    this._productsService.productByCategoryObs.subscribe(
+        
+          products=>{this.ItemsToShow=products;}
+      
+      );}
 
 }

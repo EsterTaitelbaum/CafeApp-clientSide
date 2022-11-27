@@ -136,7 +136,7 @@ p.description{
     display: inline-block;
 }
 
-.card button {
+/* .card button {
     margin: 0px 0px 0px 0px;
     border: none;
     outline: 0;
@@ -152,7 +152,7 @@ p.description{
 
 .card button:hover {
     opacity: 0.7;
-}
+} */
 .bar {
     background-color: black;
     height: 90px;
